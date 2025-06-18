@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Digital Subscriptions Store</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    :root {
+      --bg-dark: #0d0d0d;
+      --accent: #00bfff;
+      --purple: #8a2be2;
+      --text-primary: #ffffff;
+      --text-secondary: #b3b3b3;
+      --glass: rgba(29, 27, 78, 0.3);
+      --border-glass: rgba(255, 255, 255, 0.1);
+      --gold: #ffd700;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-primary);
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 20px 5%;
+      background: rgba(13, 13, 13, 0.8);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      backdrop-filter: blur(10px);
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--accent), var(--purple));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      color: var(--text-primary);
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* Hero */
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 100px 5% 40px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      background: linear-gradient(90deg, var(--accent), var(--purple));
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      max-width: 600px;
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      padding: 12px 30px;
+      background: linear-gradient(45deg, var(--accent), var(--purple));
+      color: white;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 191, 255, 0.4);
+    }
+
+    /* Products */
+    .products {
+      padding: 120px 5% 60px;
+    }
+
+    .products h2 {
+      text-align: center;
+      font-size: 2.3rem;
+      margin-bottom: 50px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .product-card {
+      background: var(--glass);
+      border: 1px solid var(--border-glass);
+      border-radius: 15px;
+      padding: 20px;
+      backdrop-filter: blur(10px);
+      animation: fadeIn 1s ease;
+      opacity: 0;
+      transform: translateY(30px);
+      animation-fill-mode: forwards;
+    }
+
+    .product-card:nth-child(n) {
+      animation-delay: calc(0.2s * var(--i));
+    }
+
+    .product-title {
+      font-size: 1.3rem;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .product-description {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+
+    .golden {
+      background: linear-gradient(135deg, #ffd700, #fff9c4);
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
+      margin-bottom: 40px;
+    }
+
+    .golden .product-title {
+      background: linear-gradient(90deg, #fff9c4, #ffd700);
+      -webkit-background-clip: text;
+      color: transparent;
+      font-weight: bold;
+    }
+
+    /* Contact */
+    .contact {
+      text-align: center;
+      padding: 100px 5%;
+    }
+
+    .contact h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      color: var(--accent);
+    }
+
+    .contact p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      max-width: 600px;
+      margin: 0 auto 30px;
+    }
+
+    footer {
+      padding: 25px 5%;
+      text-align: center;
+      background: #0a0a0a;
+      color: var(--text-secondary);
+      border-top: 1px solid var(--border-glass);
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2rem; }
+      .hero p { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="#" class="logo">DigitalSub</a>
+    <div class="nav-links">
+      <a href="#products">Products</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h1>Premium Digital Subscriptions</h1>
+    <p>Get the best deals on premium services. All subscriptions are secure and guaranteed.</p>
+    <a href="#products" class="btn">View Products</a>
+  </section>
+
+  <section class="products" id="products">
+    <h2>Our Products</h2>
+    <div class="product-grid">
+      <div class="product-card" style="--i:1;">
+        <h3 class="product-title">YouTube Premium - 12 Months</h3>
+        <p class="product-description">Enjoy ad-free videos and music across all devices.</p>
+        <a href="https://t.me/zoom_supportt" class="btn">Order Now</a>
+      </div>
+
+      <div class="product-card" style="--i:2;">
+        <h3 class="product-title">Spotify Premium - 12 Months</h3>
+        <p class="product-description">Unlimited music without interruptions. Listen anywhere.</p>
+        <a href="https://t.me/zoom_supportt" class="btn">Order Now</a>
+      </div>
+
+      <div class="product-card" style="--i:3;">
+        <h3 class="product-title">Netflix Premium - 6 Months</h3>
+        <p class="product-description">Ultra HD streaming on multiple devices. Best for families.</p>
+        <a href="https://t.me/zoom_supportt" class="btn">Order Now</a>
+      </div>
+
+      <div class="product-card" style="--i:4;">
+        <h3 class="product-title">Prime Video - 12 Months</h3>
+        <p class="product-description">Stream thousands of movies and Amazon Originals.</p>
+        <a href="https://t.me/zoom_supportt" class="btn">Order Now</a>
+      </div>
+
+      <div class="product-card" style="--i:5;">
+        <h3 class="product-title">ChatGPT Plus - 12 Months</h3>
+        <p class="product-description">Faster response times, priority access, and new features.</p>
+        <a href="https://t.me/zoom_supportt" class="btn">Order Now</a>
+      </div>
+
+      <div class="product-card" style="--i:6;">
+        <h3 class="product-title">Crunchyroll Megafan - 12 Months</h3>
+        <p class="product-description">Ad-free anime streaming with offline access.</p>
+        <a href="https://t.me/zoom_supportt" class="btn">Order Now</a>
+      </div>
+
+      <div class="product-card golden" style="--i:7;">
+        <h3 class="product-title">Membership Scrapper Available</h3>
+        <p class="product-description">Powerful tool to extract and manage subscription data.</p>
+        <a href="https://t.me/zoom_supportt" class="btn">Contact Now</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <h2>Need a Professional Website?</h2>
+    <p>We design beautiful, responsive websites starting at just $7. Let’s build your brand today.</p>
+    <a href="https://t.me/zoom_supportt" class="btn">Contact on Telegram</a>
+  </section>
+
+  <footer>
+    <p>© 2025 DigitalSub. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
